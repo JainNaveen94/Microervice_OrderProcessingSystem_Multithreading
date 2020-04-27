@@ -1,9 +1,13 @@
 package com.nagarro.microservices.dto;
 
-import com.nagarro.microservices.model.User;
+import java.util.List;
+
+import com.nagarro.microservices.model.UserModel;
 
 public interface UserDTO {
 
-	User getUser(long userId);
+	UserModel getUser(long userId);
+
+	List<UserModel> getUsers();
 
 }

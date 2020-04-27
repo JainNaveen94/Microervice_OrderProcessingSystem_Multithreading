@@ -1,5 +1,7 @@
 package com.nagarro.microservices.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,25 +13,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nagarro.microservices.constant.UserConstant;
 import com.nagarro.microservices.dto.UserDTO;
 import com.nagarro.microservices.exception.custom.UserNotFoundException;
-import com.nagarro.microservices.model.User;
+import com.nagarro.microservices.model.UserModel;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserDTO userDTO;
-	
+
 	@GetMapping("/{userId}")
-	public ResponseEntity<User> getUser(@PathVariable long userId) {
-		User user = this.userDTO.getUser(userId);
-		if(user != null) {
-			return new ResponseEntity<User>(user, HttpStatus.OK);
+	public ResponseEntity<UserModel> getUser(@PathVariable long userId) {
+		UserModel user = this.userDTO.getUser(userId);
+		if (user != null) {
+			return new ResponseEntity<UserModel>(user, HttpStatus.OK);
 		} else {
-			throw new UserNotFoundException(UserConstant.USER_NOT_FOUND + userId);
+			throw new UserNotFoundException(UserConstant.USER_NOT_FOUND_EXCEPTION + userId);
 		}
 	}
-	
-	
+
+	@GetMapping("/list")
+	public ResponseEntity<List<UserModel>> getUsers() {
+		List<UserModel> users = this.userDTO.getUsers();
+		return new ResponseEntity<List<UserModel>>(users, HttpStatus.OK);
+	}
 
 }

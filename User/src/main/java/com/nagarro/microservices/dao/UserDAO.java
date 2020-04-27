@@ -7,5 +7,6 @@ import com.nagarro.microservices.model.User;
 public interface UserDAO {
 
 	List<User> getUsers();
+	User getUser(long userId);
 
 }
