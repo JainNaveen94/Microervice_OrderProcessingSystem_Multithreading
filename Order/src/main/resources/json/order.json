@@ -1,0 +1,56 @@
+[
+	{
+		"orderId": 1,
+		"orderAmount": 250,
+		"orderDate": "14-Apr-2020",
+		"userId": 1
+	},
+	{
+		"orderId": 2,
+		"orderAmount": 25,
+		"orderDate": "14-Apr-2020",
+		"userId": 1
+	},
+	{
+		"orderId": 3,
+		"orderAmount": 8989,
+		"orderDate": "14-Apr-2020",
+		"userId": 2
+	},
+	{
+		"orderId": 4,
+		"orderAmount": 340,
+		"orderDate": "14-Apr-2020",
+		"userId": 1
+	},
+	{
+		"orderId": 5,
+		"orderAmount": 2501,
+		"orderDate": "14-Apr-2020",
+		"userId": 4
+	},
+	{
+		"orderId": 6,
+		"orderAmount": 2520,
+		"orderDate": "14-Apr-2020",
+		"userId": 2
+	},
+	{
+		"orderId": 7,
+		"orderAmount": 950,
+		"orderDate": "14-Apr-2020",
+		"userId": 3
+	},
+	{
+		"orderId": 8,
+		"orderAmount": 150,
+		"orderDate": "14-Apr-2020",
+		"userId": 3
+	},
+	{
+		"orderId": 9,
+		"orderAmount": 352,
+		"orderDate": "14-Apr-2020",
+		"userId": 1
+	}
+]

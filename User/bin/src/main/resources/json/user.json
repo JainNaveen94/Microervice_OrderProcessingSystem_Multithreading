@@ -1,0 +1,31 @@
+[
+	{
+		"id": 1,
+		"name": "Naveen",
+		"age": 24,
+		"email": "naveen.jain@nagarro.com"
+	},
+	{
+		"id": 2,
+		"name": "Shubham",
+		"age": 23,
+		"email": "Shubham.jain@nagarro.com"
+	},
+	{
+		"id": 3,
+		"name": "Siddharth",
+		"age": 25,
+		"email": "Siddharth.jain@nagarro.com"
+	},
+	{
+		"id": 4,
+		"name": "Vipul",
+		"age": 21,
+		"email": "Vipul.jain@nagarro.com"
+	},
+	{
+		"id": 5,
+		"name": "Deepak",
+		"email": "Deepak.jain@nagarro.com"
+	}
+]
