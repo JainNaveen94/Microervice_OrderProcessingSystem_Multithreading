@@ -1,0 +1,76 @@
+############################################################## Important SQL Entries ########################################################################################
+
+1. User Table ::
+
+use ordermanagement;
+
+DELETE FROM ordermanagement.user where id < 5;
+
+SELECT * FROM ordermanagement.user;
+
+INSERT INTO user VALUES (1,'Naveen Jain','naveen.jain@nagarro.com',25,'Karol Bagh','9999900000');
+INSERT INTO user VALUES (2,'Prabhi Singh','prabhi.singh@nagarro.com',24,'Pitampura','8888800000');
+INSERT INTO user VALUES (3,'Gurpreet Singh','gurpreet.singh@nagarro.com',23,'Shadhra','777770000');
+INSERT INTO user VALUES (4,'Shubham Gupta','hubham.gupta@nagarro.com',24,'Kohat Enclave','666660000');
+
+2. Product Table
+
+use ordermanagement;
+
+SELECT * FROM ordermanagement.product;
+
+update product set product_quantity = 7 where id = 4;
+
+INSERT INTO product VALUES (2,'Electronics','RedMI Phone Model MI-20 with Best Quality Features','MI 20',4000,10);
+INSERT INTO product VALUES (3,'Electronics','Samsung S Series Phone Model S20+ with Best Quality Features','Samsung S20 Pro',14000,5);
+INSERT INTO product VALUES (4,'Electronics','Sony Playstation Model V-5 With VR Technology','Sony PS 5',6900.5,8);
+INSERT INTO product VALUES (5,'Electronics','Sony TV Blueray with 360 Rotation Screen','Sony TV X360',1980.5,6);
+INSERT INTO product VALUES (6,'Transport','Royal Enfield Bullet 350 Special Silver Juglie series with Dual Disk Functionality As a Silver Anniversary Gift','Bullet 350 Silver Series',19800.5,5);
+
+3. Payment Table
+
+use ordermanagement;
+
+
+SELECT * FROM ordermanagement.payment;
+
+update payment set amount = 29000 where userid = 1;
+update payment set amount = 18000 where userid = 2;
+update payment set amount = 11000 where userid = 3;
+
+
+
+INSERT INTO payment VALUES (1, 10000);
+INSERT INTO payment VALUES (2, 8000);
+INSERT INTO payment VALUES (3, 5000);
+
+4. Order Product Table
+
+SELECT * FROM ordermanagement.order_product;
+
+INSERT INTO order_product VALUES (1,'Electronics','RedMI Phone Model MI-20 with Best Quality Features',2,'MI 20',4000,3,1);
+INSERT INTO order_product VALUES (2,'Electronics','RedMI Phone Model MI-20 with Best Quality Features',2,'MI 20',4000,2,2);
+
+INSERT INTO order_product VALUES (3,'Electronics','Samsung S Series Phone Model S20+ with Best Quality Features',3,'Samsung S20 Pro',14000,1,1);
+INSERT INTO order_product VALUES (4,'Electronics','Samsung S Series Phone Model S20+ with Best Quality Features',3,'Samsung S20 Pro',14000,5,2);
+
+INSERT INTO order_product VALUES (5,'Electronics','Sony Playstation Model V-5 With VR Technology',4,'Sony PS 5',6900.5,2,3);
+INSERT INTO order_product VALUES (6,'Electronics','Sony TV Blueray with 360 Rotation Screen',5,'Sony TV X360',1980.5,2,3);
+
+INSERT INTO order_product VALUES (7,'ABC','XYXYXYXYXYXYXYXXYXYYXXY',16,'abc',14040,3,4);
+INSERT INTO order_product VALUES (8,'XYZ','UUUIRURURURIRRIRURURURI',17,'xyz',41000,2,4);
+
+INSERT INTO order_product VALUES (9,'Transport','Royal Enfield Bullet 350 Special Silver Juglie series with Dual Disk Functionality As a Silver Anniversary Gift',6,'Bullet 350 Silver Series',19800.5,2,5);
+
+
+
+5. Order Table
+
+SELECT * FROM ordermanagement.orders;
+
+INSERT INTO orders VALUES (1,26000.0,1);
+INSERT INTO orders VALUES (2,78000.0,3);
+INSERT INTO orders VALUES (3,17762.0,4);
+INSERT INTO orders VALUES (5,39601.0,6);
+INSERT INTO orders VALUES (4,124120.0,2);
+

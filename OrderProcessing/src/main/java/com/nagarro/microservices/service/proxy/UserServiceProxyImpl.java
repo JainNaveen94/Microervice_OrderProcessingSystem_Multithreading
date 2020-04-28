@@ -1,5 +1,6 @@
 package com.nagarro.microservices.service.proxy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class UserServiceProxyImpl {
 
 	public UserModel getUser(long userId) {
 		try {
-			ResponseEntity<UserModel> userResponse = this.restTemplate.exchange(userServiceUrl + "user/" + userId,
+			ResponseEntity<UserModel> userResponse = this.restTemplate.exchange(userServiceUrl + "/user/" + userId,
 					HttpMethod.GET, null, new ParameterizedTypeReference<UserModel>() {
 					});
 			return userResponse.getBody();
@@ -34,12 +35,12 @@ public class UserServiceProxyImpl {
 
 	public List<UserModel> getUsers() {
 		try {
-			ResponseEntity<List<UserModel>> userListResponse = this.restTemplate.exchange(userServiceUrl + "user/list",
+			ResponseEntity<List<UserModel>> userListResponse = this.restTemplate.exchange(userServiceUrl + "/user/list",
 					HttpMethod.GET, null, new ParameterizedTypeReference<List<UserModel>>() {
 					});
 			return userListResponse.getBody();
 		} catch (Exception exception) {
-			return null;
+			return new ArrayList<UserModel>();
 		}
 	}
 }
