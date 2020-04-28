@@ -10,6 +10,6 @@ public interface PaymentDTO {
 
 	List<PaymentModel> getPayments();
 
-	PaymentModel updatePayment(long userId, PaymentModel paymentModel);
+	boolean updatePayment(long userId, double amountToBeDeducted);
 
 }

@@ -1,54 +1,85 @@
 package com.nagarro.microservices.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Orders")
 public class Order {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "orderId")
 	private long orderId;
+
+	@Column(name = "orderAmount")
 	private double orderAmount;
-	private String orderDate;
+
+	@Column(name = "userId")
 	private long userId;
-	
-	/* Default Constructor */
-	
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "orderId")
+	private List<Product> products;
+
+	/***** Default Constructor *****/
+
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	/* param Constructor */
-	
-	public Order(long orderId, double orderAmount, String orderDate, long userId) {
+
+	/***** Parameterized Constructor *****/
+
+	public Order(long orderId, double orderAmount, long userId, List<Product> products) {
 		super();
 		this.orderId = orderId;
 		this.orderAmount = orderAmount;
-		this.orderDate = orderDate;
 		this.userId = userId;
+		this.products = products;
 	}
-
-
-	/* getter/Setter */
 	
+	/***** Getter-Setter *****/
+
 	public long getOrderId() {
 		return orderId;
 	}
+
 	public void setOrderId(long orderId) {
 		this.orderId = orderId;
 	}
+
 	public double getOrderAmount() {
 		return orderAmount;
 	}
+
 	public void setOrderAmount(double orderAmount) {
 		this.orderAmount = orderAmount;
 	}
-	public String getOrderDate() {
-		return orderDate;
-	}
-	public void setOrderDate(String orderDate) {
-		this.orderDate = orderDate;
-	}
+
 	public long getUserId() {
 		return userId;
 	}
+
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nagarro.microservices.constant.OrderConstant;
 import com.nagarro.microservices.dto.OrderDTO;
 import com.nagarro.microservices.exception.custom.OrderNotFoundException;
-import com.nagarro.microservices.model.Order;
+import com.nagarro.microservices.model.OrderModel;
 
 @RestController
 @RequestMapping("/order")
@@ -23,25 +23,25 @@ public class OrderController {
 	private OrderDTO orderDto;
 	
 	@GetMapping("/{orderId}")
-	public ResponseEntity<Order> getOrder(@PathVariable long orderId) {
-		Order order = this.orderDto.getOrder(orderId);
+	public ResponseEntity<OrderModel> getOrder(@PathVariable long orderId) {
+		OrderModel order = this.orderDto.getOrder(orderId);
 		if(order != null) {
-			return new ResponseEntity<Order>(order, HttpStatus.OK);
+			return new ResponseEntity<OrderModel>(order, HttpStatus.OK);
 		} else {
 			throw new OrderNotFoundException(OrderConstant.ORDER_NOT_FOUND + orderId);
 		}
 	}
 	
 	@GetMapping("/list")
-	public ResponseEntity<List<Order>> getOrders() {
-		List<Order> orders = this.orderDto.getOrders();
-		return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
+	public ResponseEntity<List<OrderModel>> getOrders() {
+		List<OrderModel> orders = this.orderDto.getOrders();
+		return new ResponseEntity<List<OrderModel>>(orders, HttpStatus.OK);
 	}
 	
 	@GetMapping("/list/{userId}")
-	public ResponseEntity<List<Order>> getOrdersOfUser(@PathVariable long userId) {
-		List<Order> orders = this.orderDto.getOrdersOfUser(userId);
-		return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
+	public ResponseEntity<List<OrderModel>> getOrdersOfUser(@PathVariable long userId) {
+		List<OrderModel> orders = this.orderDto.getOrdersOfUser(userId);
+		return new ResponseEntity<List<OrderModel>>(orders, HttpStatus.OK);
 	}
 
 }

@@ -2,14 +2,14 @@ package com.nagarro.microservices.dto;
 
 import java.util.List;
 
-import com.nagarro.microservices.model.Order;
+import com.nagarro.microservices.model.OrderModel;
 
 public interface OrderDTO {
 
-	Order getOrder(long orderId);
+	OrderModel getOrder(long orderId);
 
-	List<Order> getOrders();
+	List<OrderModel> getOrders();
 
-	List<Order> getOrdersOfUser(long userId);
+	List<OrderModel> getOrdersOfUser(long userId);
 
 }

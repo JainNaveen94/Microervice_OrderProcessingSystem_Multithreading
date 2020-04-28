@@ -28,14 +28,8 @@ public class PaymentDTOImpl implements PaymentDTO {
 	}
 
 	@Override
-	public PaymentModel updatePayment(long userId, PaymentModel paymentModel) {
-		Payment payment = this.paymentModelToPayment(paymentModel);
-		Payment updatedPayment = this.paymentService.updatePayment(userId, payment);
-		if(updatedPayment != null) {
-			return this.paymentToPaymentModel(updatedPayment);
-		} else {
-			return null;
-		}
+	public boolean updatePayment(long userId, double amountToBeDeducted) {
+		return this.paymentService.updatePayment(userId, amountToBeDeducted);
 	}
 	
 	
@@ -44,11 +38,6 @@ public class PaymentDTOImpl implements PaymentDTO {
 	// Convert the Payment Object to PaymentModel Object
 	private PaymentModel paymentToPaymentModel(Payment payment) {
 		return new PaymentModel(payment.getUserId(), payment.getAmount());
-	}
-	
-	// Convert the PaymentModel Object to Payment Object
-	private Payment paymentModelToPayment(PaymentModel paymentModel) {
-		return new Payment(paymentModel.getUserId(), paymentModel.getAmount());
 	}
 	
 	// Convert the List of Payment Object to List of PaymentModel Object

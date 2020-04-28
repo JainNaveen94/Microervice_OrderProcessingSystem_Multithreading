@@ -8,4 +8,8 @@ public interface OrderDAO {
 
 	List<Order> getOrders();
 
+	Order getOrder(long orderId);
+
+	List<Order> getOrdersOfUser(long userId);
+
 }

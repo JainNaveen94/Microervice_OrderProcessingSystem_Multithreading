@@ -10,6 +10,6 @@ public interface PaymentService {
 
 	List<Payment> getPayments();
 
-	Payment updatePayment(long userId, Payment payment);
+	boolean updatePayment(long userId, double amountToBeDeducted);
 
 }

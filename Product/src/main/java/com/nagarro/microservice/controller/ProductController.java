@@ -23,68 +23,59 @@ import com.nagarro.microservice.exception.custom.ProductNotDeletedException;
 import com.nagarro.microservice.exception.custom.ProductNotFoundException;
 
 @RestController
-@RequestMapping("/product-service")
+@RequestMapping("/product")
 public class ProductController {
-	
+
 	@Autowired
 	private ProductDTO productDto;
-	
-	@PostMapping("/product")
+
+	@PostMapping("/add-product")
 	public ResponseEntity<ProductDTOModel> addProduct(@RequestBody ProductDTOModel productDTOModel) {
 		ProductDTOModel productDtoModel = this.productDto.addProduct(productDTOModel);
-		if(productDtoModel != null) {
+		if (productDtoModel != null) {
 			return new ResponseEntity<ProductDTOModel>(productDtoModel, HttpStatus.OK);
 		} else {
 			throw new ProductNotAddedException(ProductConstants.PRODUCT_NOT_ADDED);
 		}
 	}
-	
-	@GetMapping("/product/product-id/{prodId}")
+
+	@GetMapping("/{prodId}")
 	public ResponseEntity<ProductDTOModel> getProductById(@PathVariable long prodId) {
 		ProductDTOModel productDtoModel = this.productDto.getProductById(prodId);
-		if(productDtoModel != null) {
+		if (productDtoModel != null) {
 			return new ResponseEntity<ProductDTOModel>(productDtoModel, HttpStatus.OK);
 		} else {
 			throw new ProductNotFoundException(ProductConstants.PRODUCT_INCORRECT_ID + prodId);
 		}
 	}
-	
-//	@GetMapping("/product/product-name/{prodName}")
-//	public ResponseEntity<ProductDTOModel> getProductByProductName(@PathVariable String prodName) {
-//		ProductDTOModel productDtoModel = this.productDto.getProductByProductName(prodName);
-//		if(productDtoModel != null) {
-//			return new ResponseEntity<ProductDTOModel>(productDtoModel, HttpStatus.OK);
-//		} else {
-//			throw new ProductNotFoundException(ProductConstants.PRODUCT_NOT_FOUND);
-//		}
-//	}
-	
-	@GetMapping("/products")
+
+	@GetMapping("/list")
 	public ResponseEntity<List<ProductDTOModel>> getProductList() {
 		List<ProductDTOModel> products = this.productDto.getProductList();
 		return new ResponseEntity<List<ProductDTOModel>>(products, HttpStatus.OK);
 	}
-	
-	@DeleteMapping("/product/product-id/{prodId}")
+
+	@DeleteMapping("/{prodId}")
 	public ResponseEntity<String> deleteProductById(@PathVariable long prodId) {
 		Boolean result = this.productDto.deleteProductById(prodId);
-		if(result) {
+		if (result) {
 			return new ResponseEntity<String>(ProductConstants.PRODUCT_DELETED_SUCCESS + prodId, HttpStatus.OK);
 		} else {
 			throw new ProductNotDeletedException(ProductConstants.PRODUCT_DELETED_FAILER + prodId);
 		}
 	}
-	
-	@PutMapping("/product/update-quantity/product-id/{prodId}/quantity/{quantity}")
-	public ResponseEntity<QuantityUpdateDTOModel> updateProductQuantity(@PathVariable long prodId, @PathVariable int quantity) {
+
+	@PutMapping("/{prodId}/quantity/{quantity}")
+	public ResponseEntity<QuantityUpdateDTOModel> updateProductQuantity(@PathVariable long prodId,
+			@PathVariable int quantity) {
 		Boolean result = this.productDto.updateProductQuantity(prodId, quantity);
 		QuantityUpdateDTOModel response;
-		if(result) {
+		if (result) {
 			response = new QuantityUpdateDTOModel(result, ProductConstants.QUANTITY_UPDATED_SUCCESS);
 			return new ResponseEntity<QuantityUpdateDTOModel>(response, HttpStatus.OK);
 		} else {
 			response = new QuantityUpdateDTOModel(result, ProductConstants.QUANTITY_UPDATED_FAILER);
-			return new ResponseEntity<QuantityUpdateDTOModel>(response, HttpStatus.OK);
+			return new ResponseEntity<QuantityUpdateDTOModel>(response, HttpStatus.BAD_GATEWAY);
 		}
 	}
 

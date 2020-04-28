@@ -42,7 +42,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 		try {
 			return this.paymentRepository.save(payment);
 		} catch (IllegalArgumentException exception) {
-			throw new PaymentFailedException(PaymentConstant.PAYMENT_FAILED);
+			throw new PaymentFailedException(PaymentConstant.PAYMENT_FAILED_INSUFFICENT);
 		}
 	}
 	
