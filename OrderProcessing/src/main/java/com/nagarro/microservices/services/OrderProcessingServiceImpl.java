@@ -1,5 +1,6 @@
 package com.nagarro.microservices.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -9,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nagarro.microservices.constant.OrderProcessingConstant;
-import com.nagarro.microservices.exception.custom.CustomExceptionallyException;
+import com.nagarro.microservices.exception.custom.OrderNotFoundException;
+import com.nagarro.microservices.exception.custom.PaymentFailedException;
+import com.nagarro.microservices.exception.custom.PaymentNotFoundException;
+import com.nagarro.microservices.exception.custom.ProductNotFoundException;
+import com.nagarro.microservices.exception.custom.ProductQuantityNotUpdatedException;
+import com.nagarro.microservices.exception.custom.UserNotFoundException;
 import com.nagarro.microservices.model.OrderModel;
 import com.nagarro.microservices.model.OrderProcessModel;
 import com.nagarro.microservices.model.PaymentModel;
@@ -44,8 +50,10 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 
 	@Autowired
 	private Executor asyncExecutor;
-
-	@SuppressWarnings("unused")
+	
+	/****** Implemented Service Method From OrderProcessingService Interface ******/
+	
+	// To Process the Single Order
 	@Override
 	public OrderProcessModel processOrder(long orderId) {
 		OrderProcessModel orderProcess = this.initilizeOrderProcessModel(orderId);
@@ -53,7 +61,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 			sleep(100);
 			return this.getOrderDetailFromAPI(orderId);
 		}, asyncExecutor).exceptionally((exception) -> {
-			orderProcess.setMessage(exception.getMessage());
+			orderProcess.setMessage(OrderProcessingConstant.ORDER_REJECTED + exception.getCause().getMessage());
 			return null;
 		}).thenApplyAsync(order -> {
 			if (order != null) {
@@ -67,7 +75,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 				return null;
 			}
 		}, asyncExecutor).exceptionally((exception) -> {
-			orderProcess.setMessage(exception.getMessage());
+			orderProcess.setMessage(OrderProcessingConstant.ORDER_REJECTED + exception.getCause().getMessage());
 			return null;
 		}).thenApplyAsync(order -> {
 			if (order != null) {
@@ -81,7 +89,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 				return null;
 			}
 		}, asyncExecutor).exceptionally((exception) -> {
-			orderProcess.setMessage(exception.getMessage());
+			orderProcess.setMessage(OrderProcessingConstant.ORDER_REJECTED + exception.getCause().getMessage());
 			return null;
 		}).thenApplyAsync(order -> {
 			if (order != null) {
@@ -95,7 +103,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 				return null;
 			}
 		}, asyncExecutor).exceptionally((exception) -> {
-			orderProcess.setMessage(exception.getMessage());
+			orderProcess.setMessage(OrderProcessingConstant.ORDER_REJECTED + exception.getCause().getMessage());
 			return null;
 		}).thenAcceptAsync(order -> {
 			if (order != null) {
@@ -107,13 +115,23 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 				}
 			}
 		}, asyncExecutor).exceptionally((exception) -> {
-			orderProcess.setMessage(exception.getMessage());
+			orderProcess.setMessage(OrderProcessingConstant.ORDER_REJECTED + exception.getCause().getMessage());
 			return null;
 		});
 
 		sleep(1000);
 
 		return orderProcess;
+	}
+	
+	// To Process List of Orders
+	@Override
+	public List<OrderProcessModel> processOrderes(int[] orderIds) {
+		List<OrderProcessModel> ordersModel = new ArrayList<OrderProcessModel>();
+		for(int orderId: orderIds) {
+			ordersModel.add(this.processOrder(orderId));
+		}
+		return ordersModel;
 	}
 
 	/******** Private Methods to Get the Data From Proxy Services ******/
@@ -124,7 +142,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 			log.error("Order API Call To Fetech Order Detail :::: =====> {}", orderDetail.getUserId());
 			return orderDetail;
 		} else {
-			throw new CustomExceptionallyException(OrderProcessingConstant.ORDER_INCORRECT_ID + orderId);
+			throw new OrderNotFoundException(OrderProcessingConstant.ORDER_INCORRECT_ID + orderId);
 		}
 	}
 
@@ -134,7 +152,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 			log.error("User API Call To Fetech User Detail :::: =====> {}", userDetail.getName());
 			return userDetail;
 		} else {
-			throw new CustomExceptionallyException(OrderProcessingConstant.USER_INCORRECT_ID + userId);
+			throw new UserNotFoundException(OrderProcessingConstant.USER_INCORRECT_ID + userId);
 		}
 	}
 
@@ -144,7 +162,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 			log.error("Product API Call To Fetech Product Detail :::: =====> {}", productDetail.getProductName());
 			return productDetail;
 		} else {
-			throw new CustomExceptionallyException(OrderProcessingConstant.PRODUCTS_NOT_FOUND);
+			throw new ProductNotFoundException(OrderProcessingConstant.PRODUCTS_NOT_FOUND);
 		}
 	}
 
@@ -160,7 +178,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 			log.error("Payment API Call To Fetech Payment Detail :::: =====> {}", paymentDetail.getAmount());
 			return paymentDetail;
 		} else {
-			throw new CustomExceptionallyException(OrderProcessingConstant.PAYMENT_INCORRECT_ID + userId);
+			throw new PaymentNotFoundException(OrderProcessingConstant.PAYMENT_INCORRECT_ID + userId);
 		}
 	}
 
@@ -176,14 +194,14 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException exception) {
-			System.out.println(Thread.currentThread() + " : " + "time Out for Execution of Task");
+			System.out.println(Thread.currentThread() + " : " + OrderProcessingConstant.THREAD_SLEEP_EXCEPTION);
 		}
 		return true;
 	}
 
 	// Initialize The OrderProcessModel Object
 	public OrderProcessModel initilizeOrderProcessModel(long orderId) {
-		return new OrderProcessModel(orderId, -1, "Not Found", 0, false, "");
+		return new OrderProcessModel(orderId, -1, OrderProcessingConstant.NOT_FOUND, 0, false, "");
 	}
 
 	// To Validate the Product Availabilitiy
@@ -193,10 +211,12 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 			try {
 				ProductModel productInfo = this.getProductDetailFromAPI(orderProduct.getProductId());
 				if (productInfo.getProductQuantity() < orderProduct.getProductQuantity()) {
-					throw new CustomExceptionallyException(OrderProcessingConstant.INVALID_QUANTITY);
+					throw new ProductQuantityNotUpdatedException(OrderProcessingConstant.INVALID_QUANTITY);
 				}
+			} catch (ProductQuantityNotUpdatedException exception) {
+				throw new ProductQuantityNotUpdatedException(OrderProcessingConstant.INVALID_QUANTITY);
 			} catch (Exception exception) {
-				throw new CustomExceptionallyException(OrderProcessingConstant.PRODUCTS_NOT_FOUND);
+				throw new ProductNotFoundException(OrderProcessingConstant.PRODUCTS_NOT_FOUND);
 			}
 		}
 		return true;
@@ -207,14 +227,14 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
 		try {
 			PaymentModel paymentInfo = this.getPaymentDetailFromAPI(order.getUserId());
 			if (paymentInfo.getAmount() < order.getAmount()) {
-				throw new CustomExceptionallyException(OrderProcessingConstant.PAYMENT_FAILED_INSUFFICENT);
+				throw new PaymentFailedException(OrderProcessingConstant.PAYMENT_FAILED_INSUFFICENT);
 			} else {
 				return true;
 			}
-		} catch (CustomExceptionallyException exception) {
-			throw new CustomExceptionallyException(OrderProcessingConstant.PAYMENT_FAILED_INSUFFICENT);
+		} catch (PaymentFailedException exception) {
+			throw new PaymentFailedException(OrderProcessingConstant.PAYMENT_FAILED_INSUFFICENT);
 		} catch (Exception exception) {
-			throw new CustomExceptionallyException(OrderProcessingConstant.PAYMENT_INCORRECT_ID + order.getUserId());
+			throw new PaymentNotFoundException(OrderProcessingConstant.PAYMENT_INCORRECT_ID + order.getUserId());
 		}
 	}
 

@@ -21,7 +21,7 @@ public class OrderProcessingConstant {
 	
 	/***** Payment API Related Constants *****/
 	public static final String PAYMENT_NOT_FOUND = "Payment Details Not Found";
-	public static final String PAYMENT_INCORRECT_ID = "Payment Details Not Found with this User ID :: ";
+	public static final String PAYMENT_INCORRECT_ID = "Payment Details Not Found with User ID :: ";
 	public static final String PAYMENT_FAILED_INSUFFICENT = "Payment Failed due to insufficient balance";
 	public static final String PAYMENT_FAILED_SERVER = "Payment is not Updated Due to Server Issue";
 	public static final String PAYMENT_SUCCESS_SERVER = "Paymemt is Successfully Updated";
@@ -30,4 +30,10 @@ public class OrderProcessingConstant {
 	/***** Order Process Constants *****/
 	public static final String ORDER_FAILER = "Order is not Process due to some Server Issue";
 	public static final String ORDER_SUCCESS = "Order is Placed Successfully ($-$))";
+	public static final String ORDER_REJECTED = "Order Rejected As ";
+	public static final String NOT_FOUND = "not Found";
+	
+	
+	/***** Thread Sleep Constants *****/
+	public static final String THREAD_SLEEP_EXCEPTION = "time Out for Execution of Task";
 }

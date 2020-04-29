@@ -1,5 +1,7 @@
 package com.nagarro.microservices.dto;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,11 @@ public class OrderProcessingDTOImpl implements OrderProcessingDTO {
 	@Override
 	public OrderProcessModel processOrder(long orderId) {
 		return this.orderProcessingService.processOrder(orderId);
+	}
+
+	@Override
+	public List<OrderProcessModel> processOrderes(int[] orderIds) {
+		return this.orderProcessingService.processOrderes(orderIds);
 	}
 	
 	
