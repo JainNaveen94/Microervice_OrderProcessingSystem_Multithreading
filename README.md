@@ -3,7 +3,7 @@
 ***It is a MicroService Backend Application or RestAPI Application which Basically Process the Order 
 either a Single Order or Multiple Orders At the Same Time.***
 
-## Some Important Service in this are ::
+## Micro-Services List ::
 
   1. **ProductService** => For Product Fetching, Quantity Updation, Adding Product etc.
   2. **PaymentService** => For Payment Detail Fetching and updation of Payment.
@@ -13,7 +13,7 @@ either a Single Order or Multiple Orders At the Same Time.***
   6. **EurekaNamingService** => Naming Service for Other Services Registery and Discovery Purpose.
   7. **ZuulAPIGatewayService** => API Gateway Provided by Netflix to route the Requested Service from it.
   
-### Port Address For The Services
+### Port Address For The Micro-Services
 
 | **Service Name**  | **URL:Port Address** |
 | ------------- | ------------- |
@@ -28,7 +28,7 @@ either a Single Order or Multiple Orders At the Same Time.***
 The Specility Of this Application is that, here i can Perform **Concurrent Programming in OrderProcessing Service** to Process the Orders
 and their related task concurrently by multiple Threads.
 
-I had also Provide [SQL Command File](/SQL Commands.txt) For Initially Setup the Data to Process the Result.
+I had also Provide [SQL Command File](./SQL Commands.txt) For Initially Setup the Data to Process the Result.
 
 
 ## Here My DB Details are ::
