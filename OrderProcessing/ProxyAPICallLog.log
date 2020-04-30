@@ -1,0 +1,215 @@
+Apr 30, 2020 6:37:28 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252048118) : getOrder
+ Result Object :: 
+ Order ID :: 4 
+ Order Amount :: 124120.000000 
+ Order User ID :: 2 
+
+Apr 30, 2020 6:37:28 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252048251) : getUser
+ Result Object :: 
+ User ID :: 2 
+ User Name :: Prabhi Singh 
+ User Age :: 24 
+ User Email :: prabhi.singh@nagarro.com 
+ User Mobile :: 8888800000 
+ User Address :: Pitampura 
+
+Apr 30, 2020 6:37:28 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-3,5,main](1588252048380) : getProductById
+ Result Object :: null
+Apr 30, 2020 6:37:29 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252049100) : getOrder
+ Result Object :: 
+ Order ID :: 5 
+ Order Amount :: 39601.000000 
+ Order User ID :: 6 
+
+Apr 30, 2020 6:37:29 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252049218) : getUser
+ Result Object :: null
+Apr 30, 2020 6:37:30 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252050094) : getOrder
+ Result Object :: null
+Apr 30, 2020 6:37:31 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252051094) : getOrder
+ Result Object :: null
+Apr 30, 2020 6:37:32 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252052093) : getOrder
+ Result Object :: null
+Apr 30, 2020 6:37:33 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252053103) : getOrder
+ Result Object :: 
+ Order ID :: 2 
+ Order Amount :: 78000.000000 
+ Order User ID :: 3 
+
+Apr 30, 2020 6:37:33 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252053234) : getUser
+ Result Object :: 
+ User ID :: 3 
+ User Name :: Gurpreet Singh 
+ User Age :: 23 
+ User Email :: gurpreet.singh@nagarro.com 
+ User Mobile :: 777770000 
+ User Address :: Shadhra 
+
+Apr 30, 2020 6:37:33 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252053361) : getProductById
+ Result Object :: 
+ Product ID :: 2 
+ Product Name :: MI 20 
+ Product Price :: 4000.000000 
+ Product Quantity :: 10 
+ Product Description :: RedMI Phone Model MI-20 with Best Quality Features 
+
+Apr 30, 2020 6:37:33 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252053386) : getProductById
+ Result Object :: 
+ Product ID :: 3 
+ Product Name :: Samsung S20 Pro 
+ Product Price :: 14000.000000 
+ Product Quantity :: 10 
+ Product Description :: Samsung S Series Phone Model S20+ with Best Quality Features 
+
+Apr 30, 2020 6:37:33 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252053535) : getPayment
+ Result Object :: 
+ User ID :: 3 
+ Amount Available :: 33000.000000 
+
+Apr 30, 2020 6:37:34 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252054099) : getOrder
+ Result Object :: 
+ Order ID :: 3 
+ Order Amount :: 17762.000000 
+ Order User ID :: 4 
+
+Apr 30, 2020 6:37:34 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252054220) : getUser
+ Result Object :: 
+ User ID :: 4 
+ User Name :: Shubham Gupta 
+ User Age :: 24 
+ User Email :: hubham.gupta@nagarro.com 
+ User Mobile :: 666660000 
+ User Address :: Kohat Enclave 
+
+Apr 30, 2020 6:37:34 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252054336) : getProductById
+ Result Object :: 
+ Product ID :: 4 
+ Product Name :: Sony PS 5 
+ Product Price :: 6900.500000 
+ Product Quantity :: 10 
+ Product Description :: Sony Playstation Model V-5 With VR Technology 
+
+Apr 30, 2020 6:37:34 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252054349) : getProductById
+ Result Object :: 
+ Product ID :: 5 
+ Product Name :: Sony TV X360 
+ Product Price :: 1980.500000 
+ Product Quantity :: 10 
+ Product Description :: Sony TV Blueray with 360 Rotation Screen 
+
+Apr 30, 2020 6:37:34 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252054469) : getPayment
+ Result Object :: null
+Apr 30, 2020 6:37:35 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252055098) : getOrder
+ Result Object :: null
+Apr 30, 2020 6:37:36 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-1,5,main](1588252056098) : getOrder
+ Result Object :: null
+Apr 30, 2020 6:37:37 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-3,5,main](1588252057098) : getOrder
+ Result Object :: 
+ Order ID :: 2 
+ Order Amount :: 78000.000000 
+ Order User ID :: 3 
+
+Apr 30, 2020 6:37:37 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-3,5,main](1588252057215) : getUser
+ Result Object :: 
+ User ID :: 3 
+ User Name :: Gurpreet Singh 
+ User Age :: 23 
+ User Email :: gurpreet.singh@nagarro.com 
+ User Mobile :: 777770000 
+ User Address :: Shadhra 
+
+Apr 30, 2020 6:37:37 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-3,5,main](1588252057338) : getProductById
+ Result Object :: 
+ Product ID :: 2 
+ Product Name :: MI 20 
+ Product Price :: 4000.000000 
+ Product Quantity :: 10 
+ Product Description :: RedMI Phone Model MI-20 with Best Quality Features 
+
+Apr 30, 2020 6:37:37 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-3,5,main](1588252057351) : getProductById
+ Result Object :: 
+ Product ID :: 3 
+ Product Name :: Samsung S20 Pro 
+ Product Price :: 14000.000000 
+ Product Quantity :: 10 
+ Product Description :: Samsung S Series Phone Model S20+ with Best Quality Features 
+
+Apr 30, 2020 6:37:37 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-3,5,main](1588252057473) : getPayment
+ Result Object :: 
+ User ID :: 3 
+ Amount Available :: 33000.000000 
+
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058101) : getOrder
+ Result Object :: 
+ Order ID :: 1 
+ Order Amount :: 26000.000000 
+ Order User ID :: 1 
+
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058219) : getUser
+ Result Object :: 
+ User ID :: 1 
+ User Name :: Naveen Jain 
+ User Age :: 25 
+ User Email :: naveen.jain@nagarro.com 
+ User Mobile :: 9999900000 
+ User Address :: Karol Bagh 
+
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058336) : getProductById
+ Result Object :: 
+ Product ID :: 2 
+ Product Name :: MI 20 
+ Product Price :: 4000.000000 
+ Product Quantity :: 10 
+ Product Description :: RedMI Phone Model MI-20 with Best Quality Features 
+
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058351) : getProductById
+ Result Object :: 
+ Product ID :: 3 
+ Product Name :: Samsung S20 Pro 
+ Product Price :: 14000.000000 
+ Product Quantity :: 10 
+ Product Description :: Samsung S Series Phone Model S20+ with Best Quality Features 
+
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058470) : getPayment
+ Result Object :: 
+ User ID :: 1 
+ Amount Available :: 77000.000000 
+
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058507) : getUpdatedPayment
+ Result Object :: com.nagarro.microservices.model.PaymentUpdateModel@12aace8e
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058537) : updateProductQuantity
+ Result Object :: com.nagarro.microservices.model.QuantityUpdateDTOModel@4eadceed
+Apr 30, 2020 6:37:38 PM com.nagarro.microservices.aop.aspect.LogAPIProxyCallsAspect performProxyAPILogging
+INFO: Thread[NavThread-2,5,main](1588252058565) : updateProductQuantity
+ Result Object :: com.nagarro.microservices.model.QuantityUpdateDTOModel@23f219e1

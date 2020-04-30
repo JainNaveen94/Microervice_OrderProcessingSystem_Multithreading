@@ -8,7 +8,7 @@ public class ProductModel {
 	private float productPrice;
 	private int productQuantity;
 	private String productCategory;
-	
+
 	/* Default Constructor */
 	public ProductModel() {
 		// TODO Auto-generated constructor stub
@@ -74,5 +74,12 @@ public class ProductModel {
 	public void setProductCategory(String productCategory) {
 		this.productCategory = productCategory;
 	}
-	
+
+	@Override
+	public String toString() {
+		return String.format(
+				"\n Product ID :: %d \n Product Name :: %s \n Product Price :: %2f \n Product Quantity :: %d \n Product Description :: %s \n",
+				this.productId, this.productName, this.productPrice, this.productQuantity, this.productDescription);
+	}
+
 }

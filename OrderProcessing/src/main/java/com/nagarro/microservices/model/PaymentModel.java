@@ -37,5 +37,10 @@ public class PaymentModel {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("\n User ID :: %d \n Amount Available :: %2f \n", this.getUserId(), this.getAmount());
+	}
 
 }

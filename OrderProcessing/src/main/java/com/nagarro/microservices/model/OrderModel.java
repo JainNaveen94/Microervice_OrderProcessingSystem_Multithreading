@@ -58,5 +58,10 @@ public class OrderModel {
 	public void setProducts(List<ProductOrderedModel> products) {
 		this.products = products;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("\n Order ID :: %d \n Order Amount :: %2f \n Order User ID :: %d \n", this.getOrderId(), this.getAmount(), this.getUserId());
+	}
 
 }
