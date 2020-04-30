@@ -41,5 +41,10 @@ I had also Provide [SQL Command File](./SQL Commands.txt) For Initially Setup th
 ## Please Note ::
   1. All Services required Configration are available in **application.properties** file so change it as per your Requirement.
   2. For Any Futher Help if you need in it then just Message me on Git, i will Provide Solution for it.
+  
+
+## Other Important Feature Of This REST APP
+### Spring AOP Implementation 
+  1. ***Logging the Respective Proxy Services Call*** in ***OrderProcessingService*** in a Separate ***log File***.
 
 ### Thanks 
