@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.nagarro.microservices.model.CumulativeOrderModel;
 import com.nagarro.microservices.model.Order;
 import com.nagarro.microservices.model.OrderModel;
 import com.nagarro.microservices.service.OrderService;
@@ -29,6 +30,22 @@ public class OrderDTOImpl implements OrderDTO {
 	@Override
 	public List<OrderModel> getOrdersOfUser(long userId) {
 		return this.orderListToOrderModelList(this.orderService.getOrdersOfuser(userId));
+	}
+	
+	@Override
+	public List<OrderModel> getTopNOrdersBasesdOnAmount(long n) {
+		return this.orderListToOrderModelList(this.orderService.getTopNOrdersBasesdOnAmount(n));
+	}
+	
+	
+	@Override
+	public OrderModel getNthHighestOrderBasedOnAmount(int n) {
+		return this.OrderToOrderModel(this.orderService.getNthHighestOrderBasedOnAmount(n));
+	}
+	
+	@Override
+	public List<CumulativeOrderModel> getCumulativeOrderValueOfEachUser() {
+		return this.orderService.getCumulativeOrderValueOfEachUser();
 	}
 	
 	/***** Private Object Mapper Methods *****/
