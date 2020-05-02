@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nagarro.microservices.dao.OrderDAO;
+import com.nagarro.microservices.model.CumulativeOrderModel;
 import com.nagarro.microservices.model.Order;
 
 @Service
@@ -28,6 +29,21 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<Order> getOrdersOfuser(long userId) {
 		return this.orderDao.getOrdersOfUser(userId);
+	}
+
+	@Override
+	public List<Order> getTopNOrdersBasesdOnAmount(long n) {
+		return this.orderDao.getTopNOrdersBasesdOnAmount(n);
+	}
+
+	@Override
+	public Order getNthHighestOrderBasedOnAmount(int n) {
+		return this.orderDao.getNthHighestOrderBasedOnAmount(n);
+	}
+
+	@Override
+	public List<CumulativeOrderModel> getCumulativeOrderValueOfEachUser() {
+		return this.orderDao.getCumulativeOrderValueOfEachUser();
 	}
 
 	/***** --------------- Private Method ---------------- *****/
