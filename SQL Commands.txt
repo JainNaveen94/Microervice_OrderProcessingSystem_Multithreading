@@ -74,3 +74,27 @@ INSERT INTO orders VALUES (3,17762.0,4);
 INSERT INTO orders VALUES (5,39601.0,6);
 INSERT INTO orders VALUES (4,124120.0,2);
 
+
+/* Query 1    ----->   Expose an API to get top 5 order of a given user based on order amount */
+Select *
+from orders a 
+where 3 >= (Select count( DISTINCT order_amount) 
+			from orders b 
+            where b.order_amount >= a.order_amount) 
+order by a.order_amount DESC;
+
+/* Query 2    ----->   Expose an API to get 3rd highest order of a user based on order amount */
+
+Select *
+from orders a
+where 2 = (Select count(Distinct order_amount)
+			from orders b
+            where b.order_id >= a.order_id);
+
+
+/* Query 3   ----->    Expose an API to get cumulative orders value of each user.*/
+select * ,Sum(order_amount)
+from orders
+Group by user_id
+order by order_amount DESC;
+
